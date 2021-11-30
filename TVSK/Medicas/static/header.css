@@ -36,3 +36,23 @@
     background-color: white;
     color: #445dc9;   
 }
+.contact{
+    background: rgba(17, 42, 156, 0.767);
+    width: 100%;
+    color: white;
+    padding: 1vw 1vw;
+    float: right;
+}
+.cont{
+    display: flex;
+    text-align: right;
+    float: right;
+}
+span{
+    font-weight: bold;
+}
+.cont li{
+    font-size: 1.4vw;
+    padding: 0vw 3vw;
+    list-style: none;
+}
