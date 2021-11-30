@@ -1,4 +1,4 @@
-
+{% extends "pages/header.html" %}
 <!DOCTYPE html>
 <html>
 
@@ -6,34 +6,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bán thuốc</title>
+   
     
     {% load static %}
+    {% block title %}
+    <title>Bán thuốc</title>    
     <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.4-web/css/all.css'%}">
     <link rel="stylesheet" href="{% static 'banthuoc.css' %}">
+    {% endblock %}
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="container">
-            <div class="medicas">
-                <img src="{% static '/image/health.png' %}" alt="logo">
-                <a class="logo" href="{% url 'index' %}"> MEDICAS</a>
-            </div>
-            <nav class="menu">
-                <ul class="primary-nav">
-                    <li><a href="{% url 'index' %}">Trang chủ</a></li>
-                    <li ><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
-                    <li class="current"><a href="">Tư vấn thuốc</a></li>
-                </ul>
+    {% block content %}
 
-                <ul class="secondary-nav">
-                    <li class="cta"><a href="{% url 'login' %}">Đăng nhập</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <div class="main">
         <div class="Medicine">
             <div style="margin: 20px 0 0 50px">
                 <h1 class="title-block">Nhà thuốc trực tuyến thân thiện cho cả gia đình</h1>
@@ -105,5 +90,6 @@
             </ul>
         </div>
     </footer>
+    {% endblock %}
 </body>
 </html>
