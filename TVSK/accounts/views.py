@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout,decorators
 from django.contrib import messages
 
 # Create your views here.
@@ -38,7 +38,7 @@ def loginUser(request):
             messages.error(request, 'Fill out all the fields')
 
     return render(request, 'accounts/login.html', {})
-
+@decorators.login_required(login_url='login/')
 def home(request):
     return render(request, 'pages/index.html', {})
 
