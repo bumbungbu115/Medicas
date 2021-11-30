@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <title> {% block title %}Bác sĩ tư vấn{% endblock  %} </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'advisor.css' %}">
+   
+	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous">
+</script>
+
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+</head>
+
+<body>
+
+    <a name="top"></a>
+    <div class="navbar">
+        <div class="container">
+            <div class="medicas">
+                <img src="{% static '/image/health.png' %}" alt="logo">
+                <a class="logo" href="{% url 'index' %}"> MEDICAS</a>
+            </div>
+            <nav class="menu">
+                <ul class="primary-nav">
+                    <li><a href="{% url 'index' %}">Trang chủ</a></li>
+                    <li class="current"><a href="">Tư vấn sức khỏe</a></li>
+                    <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+                </ul>
+
+                <ul class="secondary-nav">
+                    <li class="cta"><a href="{% url 'login' %}">Đăng nhập</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="slider" class="illustration">
+        <div class="Gioithieu">
+            <p>Đội ngũ các Chuyên gia, Bác sĩ ưu tú từ các Bệnh viện hàng đầu.</p>
+            <blockquote class="slogan"><i class="fas fa-stethoscope"> </i> Chăm sóc sức khỏe - Chia sẻ niềm vui</blockquote>
+        </div>
+        <img class="mainbanner" src="https://vifapharmacy.vn/wp-content/uploads/2020/09/background-top-vifa-1025x800.png" alt="">
+        <img class="sp" src="{% static 'image/doctor-list-banner-3-dt.svg' %}" alt="">
+
+
+    </div>
+    <div class="main">
+
+        <section class="find">
+            <h2>Tìm bác sĩ của bạn</h2>
+            <hr />
+            <div class="form-group-name">
+                <form method="get">
+                    <input type="search" id="name" name="name" placeholder="Tìm theo tên">
+                    {{nameFilter.form}}
+                    <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button>
+                </form>
+            </div>
+            <div class="form-group-specialty">
+                <form method="get">
+               <select>
+                    <option selected="" value="-2">Tìm theo chuyên khoa</option>
+                    {% comment %} {% for opt in spec %}
+                    <option value="{{opt.id}}" >{{opt.khoa}}</option>
+                    {% endfor %} {% endcomment %}
+                </select>
+                    {% comment %} {{specFilter.form}} {% endcomment %}
+                    {% comment %} <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
+                </form>
+            </div>
+        </section>
+
+        <section advisor>
+            <div class="text-wrap" id="demo">
+                {% if data %}
+                    {% for item in data %}
+                <div class="col box">
+                    <div class="testimonial ">
+                        <img src="{{item.image.url}}" alt="">
+                        <div class="info">
+                            <p class="name">{{item.name}}</p>
+                            <cite class="specialty">{{item.specialty}}</cite>
+                        </div>
+                        <hr>
+                        <p>{{item.info}}</p>
+
+                    </div>
+                    <div class="Chat"> <a href="{% url 'chatroom' %}">Kết nối</a> </div>
+                </div>
+                    {% endfor %}
+                {% else %}
+                    <p> DỮ LIỆU KHÔNG TỒN TẠI </p>
+                {% endif %}
+            </div>
+        </section>
+        <button class="show_more_btn" id="loadMore" data-total="{{total_data}}" data-limit="6">XEM THÊM</button>
+        <hr class="line">
+
+    </div>
+
+    <button id="openChatbox" class="Chat-popup"><i class="material-icons"> insert_comment </i></button>
+    <div id ="myChatbox"class="Chatbox">
+        <!-- <div class="badge">1</div> -->
+        <div class="chat-header">
+            <div class="active">
+                <i class="material-icons"> support_agent </i>
+                <h4> BS. Lê Hoàng Hạnh Nghi</h4>
+                <h6>Đang hoạt động</h3>
+            </div>
+            <button><i class="fas fa-compress-alt"></i></button>
+        </div>
+        <hr>
+        <div class="chat-area">
+            <div class="income-chats">
+                <div class="income-msg">
+                    <img class="avatar"
+                        src="https://cdn.jiohealth.com/doctor/114979/e338e98b-33e7-4731-8b99-a97445322d89" alt="">
+                    <span class="msg">Xin chào, tôi có thể giúp gì cho bạn?</span>
+                </div>
+            </div>
+            <div class="outgoing-chats">
+                <div class="outgoing-msg">
+                    <span class="msg">Hello bác sĩ</span>
+                    <img class="avatar" src=" {% static 'image/avatar.jpg' %} " alt="">
+                </div>
+            </div>
+
+        </div>
+        <div class="input-area">
+            <input type="text" placeholder="text here...">
+            <button class="icons"><i class="material-icons"> insert_emoticon </i></button>
+            <button class="submit"><i class="material-icons">send</i></button>
+            <button class="list"><i class="material-icons"> format_list_bulleted </i></button>
+            <button class="upload"><i class="material-icons"> attach_file </i></button>
+        </div>
+    </div>
+    <a class="gotopbtn" href="#top"><i class="fas fa-chevron-up"></i></a>
+    <script>
+        document.getElementById("openChatbox").onclick = function() {myFunction()};
+        function myFunction() {
+        document.getElementById("myChatbox").classList.toggle("show");}
+    </script>
+    <div class="footer-illu">
+        <img class="foo" src=" {% static 'image/footer-health-care.png' %}" alt="">
+    </div>
+    </div>
+    <footer>
+        <div class="contact">
+           <ul class="cont">
+               <li> <span>Điện thoại</span> 09934923</li>
+               <li> <span>Hotline</span> 190063689</li>
+               <li> <span>Hỗ trợ</span> support@health.com</li>
+           </ul>
+       </div>
+    </footer>
+</body>
+</html>

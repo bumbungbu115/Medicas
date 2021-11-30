@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sign up.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img class="icon" src="{% static '/image/health.png' %}" alt="logo">
+            <a class="logo" href="#">MEDICAS </a>
+            <h1 class="slogan">Chăm sóc sức khỏe - Chia sẻ niềm vui</h1>
+        </div>
+            <nav>
+               <ul class="menu">
+                   <li class="current"><a href="#">Trang chủ</a></li>
+                   <li><a href="advisor.html">Tư vấn sức khỏe</a></li>
+                   <li><a href="banthuoc.html">Tư vấn thuốc</a></li>
+               </ul>
+               <ul class="login">
+                    <li><a href="login.html">Đăng nhập/Đăng ký</a></li>
+               </ul>
+            </nav>
+    </div>
+</head>
+<body>
+    <div class="container">
+    <h1>Register</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username">Username</label><br>
+        {{form.username}} <br>
+        <label for="email">Email</label><br>
+        {{form.email}} <br>
+        <label for="password1">Password</label><br>
+        {{form.password1}} <br>
+        <label for="password2">Confirm Password</label><br>
+        {{form.password2}} <br>
+
+        {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            {{ error|escape }}
+        {% endfor %}
+        {% endif %} <br><br>
+        <input type="submit" value="Register">
+    </form>
+</div>
+</body>
+</html>

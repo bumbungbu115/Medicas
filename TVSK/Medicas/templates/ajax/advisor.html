@@ -1,0 +1,19 @@
+{% if data %}
+{% for item in data %}
+<div class="col box">
+    <div class="testimonial ">
+        <img src="{{item.image.url}}">
+        <div class="info">
+            <p class="name">{{item.name}}</p>
+            <cite class="specialty">{{item.specialty}}</cite>
+        </div>
+        <hr>
+        <p>{{item.info}}</p>
+
+    </div>
+    <div class="Chat"> <a href="">Kết nối</a> </div>
+</div>
+{% endfor %}
+{% else %}
+<p> DỮ LIỆU KHÔNG TỒN TẠI </p>
+{% endif %}

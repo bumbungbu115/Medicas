@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chitiet.css'%}">
+    <title>Chi tiết sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="contain">
+            <div class="medicas">
+                <img src="{% static '/image/health.png' %}" alt="logo">
+                <a class="logo" href="#"> MEDICAS</a>
+            </div>
+            <nav class="menu">
+                <ul class="primary-nav">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li ><a href="#">Tư vấn sức khỏe</a></li>
+                    <li class="current"><a href="">Tư vấn thuốc</a></li>
+                </ul>
+
+                <ul class="secondary-nav">
+                    <li class="cta"><a href="#">Đăng nhập</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="detail-contain">
+        <div class="title-m" style="display: flex;margin: 20px;">
+            <a href="{% url 'index' %}">Trang chủ</a>
+            <p>&nbsp;&rsaquo;&nbsp;</p>
+            <a href="{% url 'medicine' %}">Tư vấn</a>
+            <p>&nbsp;&rsaquo;&nbsp;</p>
+            {% for item in ds %}
+                <a href="{% url 'tuvan' item.PHANLOAI %}">{{item.PHANLOAI}}</a>
+                <p>&nbsp;&rsaquo;&nbsp;</p>
+                <a href="#">{{item.CONGDUNG}}</a>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="title" style="margin-top: 50px;">
+                <p>CHI TIẾT SẢN PHẨM</p>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <div class="img-left margin" style="text-align: center;margin: 0 auto;">
+                    {% for item in pD%}
+                    <div >
+                        <img src="{{item.URL}}"alt="" style="height: 256px;width: 256px;">
+                    </div>                   
+                    {% endfor %}
+                </div>
+                
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <div class="info-right">
+                    {% for name in info %}
+                    <h2 >{{name.INFO}}</h2>
+                    <div>
+                        <p class="cl-grey">Thương hiệu: {{name.THUONGHIEU}} || Sản xuất: {{name.SANXUAT}}</p>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="margin">
+            {% endfor %}
+                    {% for item in pD %}                   
+                    <h4 class="cl-blue">Mô ta sản phẩm</h4>
+                    <p>{{item.MOTASP}}{{id.MOTASP}}</p>
+                    <h4 class="cl-blue">Thành phần</h4>
+                    <p>{{item.VIEN}}</p>
+                    <h4 class="cl-blue">Hướng dẫn sử dụng</h4>
+                    <p class="cl-blue">{{item.LIEULUONG}}</p>
+                    <h4 class="cl-blue">Bảo quản </h4>
+                    <p class="cl-blue">{{item.BAOQUAN}}</p>
+                    <h4 class="cl-blue">Thận trọng </h4>
+                    <p>{{item.THANTRONG}}</p>
+                    {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <div class="contact">
+            <ul class="cont">
+                <li> <span>Điện thoại</span> 09934923</li>
+                <li> <span>Hotline</span> 190063689</li>
+                <li> <span>Hỗ trợ</span> support@health.com</li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>

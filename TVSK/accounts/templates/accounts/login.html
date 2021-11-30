@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sign up.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img class="icon" src="{% static '/image/health.png' %}" alt="logo">
+            <a class="logo" href="#">MEDICAS </a>
+            <h1 class="slogan">Chăm sóc sức khỏe - Chia sẻ niềm vui</h1>
+        </div>
+            <nav>
+               <ul class="menu">
+                   <li class="current"><a href="{% url 'index' %}">Trang chủ</a></li>
+                   <li><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
+                   <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+               </ul>
+               <ul class="login">
+                    <li><a href="login.html">Đăng nhập/Đăng ký</a></li>
+               </ul>
+            </nav>
+    </div>
+</head>
+<body>
+    <div class="container">
+    <h1>Login</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username">Username</label><br>
+        <input type="text" name="username"><br>
+        <label for="password">Password</label><br>
+        <input type="password" name="password"><br>
+
+        {% for message in messages %}
+        {{message}}
+        {% endfor %} <br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+</body>
+</html>

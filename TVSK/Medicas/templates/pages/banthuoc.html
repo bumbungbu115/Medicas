@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán thuốc</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.4-web/css/all.css'%}">
+    <link rel="stylesheet" href="{% static 'banthuoc.css' %}">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div class="medicas">
+                <img src="{% static '/image/health.png' %}" alt="logo">
+                <a class="logo" href="{% url 'index' %}"> MEDICAS</a>
+            </div>
+            <nav class="menu">
+                <ul class="primary-nav">
+                    <li><a href="{% url 'index' %}">Trang chủ</a></li>
+                    <li ><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
+                    <li class="current"><a href="">Tư vấn thuốc</a></li>
+                </ul>
+
+                <ul class="secondary-nav">
+                    <li class="cta"><a href="{% url 'login' %}">Đăng nhập</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="main">
+        <div class="Medicine">
+            <div style="margin: 20px 0 0 50px">
+                <h1 class="title-block">Nhà thuốc trực tuyến thân thiện cho cả gia đình</h1>
+            <p style="">
+                "Mọi nhu cầu chăm sóc sức khoẻ của gia đình bạn sẽ được đáp ứng nhanh chóng, tận tâm, và hoàn toàn trực
+                tuyến."
+            </p>
+            </div>
+            
+            <div class="list-item">
+                <div class="item6 item__stype">
+                    <a href="{% url 'tuvan' 'Thực phẩm chức năng'%}">
+                        <div class="item">
+                            <i class="fas fa-tablets color__white icon__stype"></i>
+                            <p class="font"><b>Thực phẩm chức năng</b></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="item1 item__stype">
+                    <a href="{% url 'tuvan' 'Tủ thuốc gia đình'%}">
+                        <div class="item">
+                            <i class="fas fa-clinic-medical color__white icon__stype"></i>
+                            <p class="font"><b>Tủ thuốc gia đình</b></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="item2 item__stype">
+                    <a href="{% url 'tuvan' 'Tủ Thuốc Covid'%}">
+                        <div class="item">
+                            <i class="fas fa-lungs-virus color__white icon__stype"></i>
+                            <p class="font"><b>Tủ Thuốc Covid</b></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="item3 item__stype">
+                    <a href="{% url 'tuvan' 'Chăm sóc cá nhân'%}">
+                        <div class="item">
+                            <i class="fas fa-user-md color__white icon__stype"></i>
+                            <p class="font"><b>Chăm sóc cá nhân</b></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="item4 item__stype">
+                    <a href="{% url 'tuvan' 'Chăm sóc sắc đẹp'%}">
+                        <div class="item">
+                            <i class="fas fa-pump-soap color__white icon__stype"></i>
+                            <p class="font"><b>Chăm sóc sắc đẹp</b></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="item5 item__stype">
+                    <a href="{% url 'tuvan' 'Dụng cụ y tế'%}">
+                        <div class="item">
+                            <i class="fas fa-stethoscope color__white icon__stype"></i>
+                            <p class="font"><b>Dụng cụ y tế</b></p>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="contact">
+            <ul class="cont">
+                <li> <span>Điện thoại</span> 09934923</li>
+                <li> <span>Hotline</span> 190063689</li>
+                <li> <span>Hỗ trợ</span> support@health.com</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

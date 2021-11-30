@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICAS</title>
+    {% comment %} <link rel="stylesheet" href="css/main.css"> {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img class="icon" src="{% static '/image/health.png' %}" alt="logo"">
+            <a class="logo" href="#">MEDICAS </a>
+            <h1 class="slogan">Chăm sóc sức khỏe - Chia sẻ niềm vui</h1>
+        </div>
+            <nav>
+               <ul class="menu">
+                   <li class="current"><a href="">Trang chủ</a></li>
+                   <li><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
+                   <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+               </ul>
+               <ul class="login">
+                    <li><a href="{% url 'login' %}">Đăng nhập/Đăng ký</a></li>
+               </ul>
+            </nav>
+    </div>
+    {% comment %} <!-- <div class="slide">
+        <img src="https://cdn.sanity.io/images/0vv8moc6/physpractice/d8d8a5f6b54ec6d3bab2c00c59be192e35189ce8-1000x600.png?fit=crop&auto=format" alt="">
+    </div> --> {% endcomment %}
+    <div class="description1">
+        <div class="block1">
+            <div class="part1">
+                <p class="header-text1">Bạn thấy không khỏe?</p>
+                <p class="header-text1">Hãy để Medicas chăm sóc cho bạn</p>
+                <p>Tìm hiểu thêm về các dịch vụ chăm sóc sức khỏe của chúng tôi - các bác sĩ Medicas thân thiện sẽ tận tình chăm sóc bạn và gia đình.</p>
+            </div> 
+            <img src="{% static '/image/not-feeling-well.svg' %}" alt="">   
+        </div>      
+    </div>
+
+    <div class="description2">
+        <div class="block2">
+            <div class="img2"><img src="{% static 'image/call doctor.jpg' %}" alt=""> </div>
+            <div class="part2">  
+                <p class="header-text2">Tư vấn sức khỏe 24/7 </p>
+                <p> Bạn cần sự tư vấn chuyên môn khi gặp các vấn đề sức khỏe? Dù bạn ở đâu hay vào bất cứ lúc nào, các bác sĩ Medicas luôn sẵn sàng tư vấn, giải đáp đáp mọi thắc mắc của bạn.</p>
+            </div> 
+        </div>      
+    </div>
+    
+</body>
+<footer>
+    <div class="contact">
+       <ul class="cont">
+           <li> <span>Điện thoại</span> 09934923</li>
+           <li> <span>Hotline</span> 190063689</li>
+           <li> <span>Hỗ trợ</span> support@health.com</li>
+       </ul>
+   </div>
+</footer>
+</html>

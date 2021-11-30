@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Josefin+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap');
+
+body{
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+}
+.navbar{
+    background-color: var(--primary-color);
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    height: 5%;
+}
+
+.navbar .container{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 30vw auto;
+    background: #445dc9;
+}
+.navbar .medicas{
+    display: inline-flex;
+    margin: 0.5em;
+}
+.navbar .medicas img{
+    width: 4.3vw;
+    height: 3.3vw;
+    padding-left: 1.8vw;
+    padding-top: .4vw;
+}
+
+.navbar .medicas .logo{
+    display: flex;
+    margin-top: 0vw;
+    margin-left: .1em;
+    text-decoration: none;
+    font-size: 2.9vw;
+    font-family: 'Libre Caslon Text';
+    font-weight: bold;
+    color: white;
+    
+}
+.navbar nav ul{
+    list-style-type: none;
+    text-align: right;
+    margin:0 auto;
+    padding: 1.5vw 1vw;
+}
+.navbar nav ul a{
+    font-size: 1.7vw;
+    font-family: 'Fira Sans';
+    text-decoration: none;
+    color:white;
+}
+.navbar nav ul li{
+    text-align: center;
+    display: inline;
+}
+li.current{
+    font-weight: normal;
+    text-decoration: underline;
+}
+.navbar nav.menu{
+    margin: 0vw auto;
+    margin-left: 2.5vw;
+}
+.navbar nav ul.primary-nav li a{
+    padding-left: 4vw;
+}
+.navbar nav ul.secondary-nav{
+    position: absolute;
+    top:.1vw;
+    right: 2%;
+}
+.cta a{
+    border: .15vw solid white;
+    border-radius: 3vw;
+    padding: .3vw .5vw;
+    width: 10vw;
+}
+.cta a:hover{
+   background: white;
+   color: var(--primary-color);
+}
+
+.primary-nav li a:hover{
+   text-decoration: white underline;
+}
+.contact{
+    background: rgba(17, 42, 156, 0.767);
+    width: 100%;
+    color: white;
+    padding: 1vw 1vw;
+    float: right;
+}
+.cont{
+    display: flex;
+    text-align: right;
+    float: right;
+}
+span{
+    font-weight: bold;
+}
+.cont li{
+    font-size: 1.4vw;
+    padding: 0vw 3vw;
+}
+.max_size{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.menu-left ul{
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 0 14px 3px rgb(0 0 0 / 10%);
+}
+.menu-left{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+
+}
+.menu-left ul li a{
+    display: block;
+    font: 15px/24px arial;
+    border-bottom: 1px solid #ececec;
+    padding-left: 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 14pt;
+    padding: 5px 5px;
+}
+
+.title-left{
+    margin: 0;
+    font: 24px/32px arial;
+    color: #0d7182;
+    margin-bottom: 15px;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.title-right{
+    margin: 20px 20px;
+    font: 24px/32px arial;
+    color: #000000;
+    margin-bottom: 15px;
+    font-size: 24pt;
+    font-weight: bold;
+    
+}
+.form-content{
+    padding-left: 70px;
+    height: fit-content;
+}
+.margin-top{
+    margin-top: 12px !important;
+    --bs-gutter-y:20px !important;
+    margin-bottom: 20px;
+}
+.cont li{
+    list-style: none;
+}
+.form-col3{
+    --bs-gutter-y:10px;
+    margin:0;
+    
+}
+.question{
+    padding: 20px;
+}
+.menu-title{
+    display: flex;
+    font-size: 14pt;
+    margin: 20px;
+    padding-left: 10px;
+}
+.card-style{
+    box-shadow: 0 0 14px 3px rgb(0 0 0 / 10%);
+    height: 420px;
+}
+.form-group-name{
+    z-index: 0;
+    position: absolute;
+    padding: 0.5vw;
+    width: 30%;
+    top: 45.5vw;
+    left: 15vw;
+    height: 2vw;
+    border-radius: 3vw;
+    border: .2vw solid #000;
+    background: white;
+}
+.card-body p{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 2;
+    height: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
