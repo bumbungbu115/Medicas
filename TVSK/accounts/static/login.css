@@ -82,8 +82,7 @@ a{
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-
-.form {
+.part2{
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -94,15 +93,21 @@ a{
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   border-radius: 30px;
 }
-.form h2{
+h2{
   font-size: 40px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
+  color: #4CAF50;
   
 }
-hr {
+ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
+}
+.part2 label[for=username], label[for=password]{
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 }
 input[type=text], input[type=password] {
   font-family: "Roboto", sans-serif;
@@ -120,7 +125,7 @@ input[type=text], input[type=password] {
   box-shadow:4px 4px 10px rgba(0,0,0,0.2);
 }
 
-.form button {
+.part2 input[type=submit] {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -133,16 +138,17 @@ input[type=text], input[type=password] {
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  border-radius:15px;
 }
-.form button:hover,.form button:active,.form button:focus {
+.part2 input:hover, input:active, input:focus {
   background:whitesmoke;
 }
-.form .message {
+.part2 .message {
   margin: 15px 0 0;
   color: #b3b3b3;
-  font-size: 12px;
+  font-size: 20px;
 }
-.form .message a {
+.part2 .mesage a {
   font-size: medium;
   color: #4CAF50;
   text-decoration: none;
