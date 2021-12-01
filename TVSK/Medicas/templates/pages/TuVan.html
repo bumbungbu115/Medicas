@@ -49,18 +49,7 @@
                             </form>
                                 {% if sp %}
                                     {% for item in sp %}                                   
-                                        {% comment %} <div class="col-md-4 col-sm-12 col-12">
-                                            <div class="card card-style" style="height: 420px;">
-                                                <img src="{{item.URL}}" style="height: 256px;width: 95%;" alt="">
-                                                <div class="card-body">
-                                                    <h5 class="card-title bold">{{item.TENSP}}</h5>
-                                                    <p>{{item.INFO}}</p>
-                                                <a href="{% url 'details' item.id %}">
-                                                    <p>Chi Tiết > </p>
-                                                </a>                                                                                                 
-                                                </div>
-                                            </div>
-                                        </div> {% endcomment %}
+                                    
                                         <div class="col-md-4 col-6">
                                             <a href="{% url 'details' item.id %}" class="text-decoration-none text-dark">
                                                 <div class="card">

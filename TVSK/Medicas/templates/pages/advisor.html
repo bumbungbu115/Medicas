@@ -32,7 +32,7 @@ integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="a
                 <ul class="primary-nav">
                     <li><a href="{% url 'index' %}">Trang chủ</a></li>
                     <li class="current"><a href="">Tư vấn sức khỏe</a></li>
-                    <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+                    <li><a href="{% url 'medicine' %}">Tủ thuốc</a></li>
                 </ul>
 
                 <ul class="secondary-nav">
@@ -65,14 +65,16 @@ integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="a
             </div>
             <div class="form-group-specialty">
                 <form method="get">
-               <select>
+                    {% csrf_token %}
+               <select name="opts">
                     <option selected="" value="-2">Tìm theo chuyên khoa</option>
-                    {% comment %} {% for opt in spec %}
-                    <option value="{{opt.id}}" >{{opt.khoa}}</option>
-                    {% endfor %} {% endcomment %}
+                    {% for opt in spec %}
+                        <option value="{{opt.id}}">{{opt.spec}}</option>
+                    {% endfor %}
                 </select>
-                    {% comment %} {{specFilter.form}} {% endcomment %}
-                    {% comment %} <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
+                    {% comment %} {{nameFilter.form}}
+                    <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
+                    {{specFilter.form}}
                 </form>
             </div>
         </section>

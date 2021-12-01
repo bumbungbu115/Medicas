@@ -3,10 +3,10 @@ from typing import Text
 from django.core.checks.messages import INFO
 from django.db.models.fields.related import ForeignKey, ForeignObject
 from django.shortcuts import render ,  redirect
-from django.http import JsonResponse,HttpResponse
+from django.http import JsonResponse,HttpResponse, request
 from django.views.generic import View, TemplateView
 from django.template.loader import render_to_string
-from .models import INFOSP, Advisor_Profile
+from .models import INFOSP, Advisor_Profile , Specialty
 from .filters import FilterAdName, FilterAdSpe, FilterDSSP
 from .models import DANH_SACH_SP,MOTA,INFOSP
 
@@ -21,11 +21,12 @@ def advisorlist(request):
     total_data=Advisor_Profile.objects.count()
     data=Advisor_Profile.objects.all()[:6]
     test=Advisor_Profile.objects.all()
-    # spec=Specialty.objects.all()
+    spec=Specialty.objects.all()
+    opts=request.GET.get('opts','-2')
+    specFilter= Advisor_Profile.objects.filter(specialty__icontains=opts)
     nameFilter = FilterAdName(request.GET, queryset=test)
-    # specFilter = FilterAdSpe(request.GET, queryset=test3)
     data=nameFilter.qs[:6]
-    context={"data":data, "total_data":total_data, 'nameFilter':test}
+    context={"data":data, "total_data":total_data, 'nameFilter':test, 'spec':spec, 'specFilter':specFilter}
     return render(request, 'pages/advisor.html',context)
 
 def tuvan(request, phanloai):

@@ -8,6 +8,8 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'sign up.css' %}">
 </head>
+    
+<body style="background-image: url('{% static "/image/log_signup.png" %}');">
 <body>
     <div class="header">
         <div class="container">
@@ -18,17 +20,14 @@
             <nav>
                <ul class="menu">
                    <li class="current"><a href="#">Trang chủ</a></li>
-                   <li><a href="advisor.html">Tư vấn sức khỏe</a></li>
-                   <li><a href="banthuoc.html">Tư vấn thuốc</a></li>
+                   <li><a href="{%url 'advisor'%}">Tư vấn sức khỏe</a></li>
+                   <li><a href="{%url 'medicine'%}">Tủ thuốc</a></li>
                </ul>
                <ul class="login">
-                    <li><a href="login.html">Đăng nhập/Đăng ký</a></li>
+                    <li><a href="{%url 'login'%}">Đăng nhập/Đăng ký</a></li>
                </ul>
             </nav>
     </div>
-</head>
-<body style="background-image: url('{% static "/image/log_signup.png" %}');">
-<body>
     <div class="part2">
     <h2>Đăng kí</h2>
     <form action="" method="post">
@@ -56,4 +55,13 @@
     </form>
 </div>
 </body>
+<footer>
+    <div class="contact">
+       <ul class="cont">
+           <li> <span>Điện thoại</span> 09934923</li>
+           <li> <span>Hotline</span> 190063689</li>
+           <li> <span>Hỗ trợ</span> support@health.com</li>
+       </ul>
+   </div>
+</footer>
 </html>
