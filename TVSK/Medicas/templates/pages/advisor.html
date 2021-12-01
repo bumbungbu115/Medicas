@@ -20,7 +20,7 @@
 <body>
     {% block content %}
     <a name="top"></a>
-    <div id="slider" class="illustration">
+        <div id="slider" class="illustration">
         <div class="Gioithieu">
             <p>Đội ngũ các Chuyên gia, Bác sĩ ưu tú từ các Bệnh viện hàng đầu.</p>
             <blockquote class="slogan"><i class="fas fa-stethoscope"> </i> Chăm sóc sức khỏe - Chia sẻ niềm vui</blockquote>
@@ -44,14 +44,16 @@
             </div>
             <div class="form-group-specialty">
                 <form method="get">
-               <select>
+                    {% csrf_token %}
+               <select name="opts">
                     <option selected="" value="-2">Tìm theo chuyên khoa</option>
-                    {% comment %} {% for opt in spec %}
-                    <option value="{{opt.id}}" >{{opt.khoa}}</option>
-                    {% endfor %} {% endcomment %}
+                    {% for opt in spec %}
+                        <option value="{{opt.id}}">{{opt.spec}}</option>
+                    {% endfor %}
                 </select>
-                    {% comment %} {{specFilter.form}} {% endcomment %}
-                    {% comment %} <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
+                    {% comment %} {{nameFilter.form}}
+                    <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
+                    {{specFilter.form}}
                 </form>
             </div>
         </section>

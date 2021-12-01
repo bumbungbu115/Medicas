@@ -8,6 +8,8 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
+    
+<body style="background-image: url('{% static "/image/log_signup.png" %}');">
 <body>
     <div class="header">
         <div class="container">
@@ -19,18 +21,15 @@
                <ul class="menu">
                    <li class="current"><a href="{% url 'index' %}">Trang chủ</a></li>
                    <li><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
-                   <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+                   <li><a href="{% url 'medicine' %}">Tủ thuốc</a></li>
                </ul>
                <ul class="login">
-                    <li><a href="login.html">Đăng nhập/Đăng ký</a></li>
+                    <li><a href="{% url 'register' %}">Đăng nhập/Đăng ký</a></li>
                </ul>
             </nav>
     </div>
-</head>
-<body style="background-image: url('{% static "/image/log_signup.png" %}');">
-<body>
     <div class="part2">
-    <h2>Đăng Nhập</h2>
+        <h2>Đăng Nhập</h2>
         <form action="" method="post">
             {% csrf_token %}
         <label for="username">Tên đăng nhập</label><br>
