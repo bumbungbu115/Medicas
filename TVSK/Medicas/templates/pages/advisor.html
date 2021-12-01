@@ -1,10 +1,13 @@
-{% extends "pages/header.html" %}
 <!DOCTYPE html>
 <html lang="en">
 
-<head>   
-    {% block title %}
-    <title> Bác sĩ tư vấn</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <title> {% block title %}Bác sĩ tư vấn{% endblock  %} </title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'advisor.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,14 +16,32 @@
     </script>
 
     <script type="text/javascript" src="{% static 'main.js' %}"></script>
-    {% endblock %}
 
 </head>
 
 <body>
-    {% block content %}
+
     <a name="top"></a>
-        <div id="slider" class="illustration">
+    <div class="navbar">
+        <div class="container">
+            <div class="medicas">
+                <img src="{% static '/image/health.png' %}" alt="logo">
+                <a class="logo" href="{% url 'index' %}"> MEDICAS</a>
+            </div>
+            <nav class="menu">
+                <ul class="primary-nav">
+                    <li><a href="{% url 'index' %}">Trang chủ</a></li>
+                    <li class="current"><a href="">Tư vấn sức khỏe</a></li>
+                    <li><a href="{% url 'medicine' %}">Tư vấn thuốc</a></li>
+                </ul>
+
+                <ul class="secondary-nav">
+                    <li class="cta"><a href="{% url 'login' %}">Đăng nhập</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="slider" class="illustration">
         <div class="Gioithieu">
             <p>Đội ngũ các Chuyên gia, Bác sĩ ưu tú từ các Bệnh viện hàng đầu.</p>
             <blockquote class="slogan"><i class="fas fa-stethoscope"> </i> Chăm sóc sức khỏe - Chia sẻ niềm vui</blockquote>
@@ -44,16 +65,14 @@
             </div>
             <div class="form-group-specialty">
                 <form method="get">
-                    {% csrf_token %}
-               <select name="opts">
+               <select>
                     <option selected="" value="-2">Tìm theo chuyên khoa</option>
-                    {% for opt in spec %}
-                        <option value="{{opt.id}}">{{opt.spec}}</option>
-                    {% endfor %}
+                    {% comment %} {% for opt in spec %}
+                    <option value="{{opt.id}}" >{{opt.khoa}}</option>
+                    {% endfor %} {% endcomment %}
                 </select>
-                    {% comment %} {{nameFilter.form}}
-                    <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
-                    {{specFilter.form}}
+                    {% comment %} {{specFilter.form}} {% endcomment %}
+                    {% comment %} <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
                 </form>
             </div>
         </section>
@@ -132,6 +151,14 @@
         <img class="foo" src=" {% static 'image/footer-health-care.png' %}" alt="">
     </div>
     </div>
-    {% endblock %}
+    <footer>
+        <div class="contact">
+           <ul class="cont">
+               <li> <span>Điện thoại</span> 09934923</li>
+               <li> <span>Hotline</span> 190063689</li>
+               <li> <span>Hỗ trợ</span> support@health.com</li>
+           </ul>
+       </div>
+    </footer>
 </body>
 </html>

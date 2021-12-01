@@ -36,6 +36,9 @@
     background-color: white;
     color: #445dc9;   
 }
+li.current{
+    padding: 0 20px;
+}
 .contact{
     background: rgba(17, 42, 156, 0.767);
     width: 100%;
