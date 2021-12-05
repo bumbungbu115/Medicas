@@ -16,7 +16,8 @@ def chatroom(request, pk:int):
     )
     messages.update(seen=True)
     messages = messages | Message.objects.filter(Q(receiver=otheruser, sender=request.user) )
-    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': User.objects.all(), "user_messages": messages})
+    users=User.objects.exclude(pk=request.user.pk)
+    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages})
 
 @login_required
 def ajax_load_messages(request, pk):

@@ -1,4 +1,3 @@
-from io import TextIOBase
 from typing import Text
 from django.core.checks.messages import INFO
 from django.db.models.fields.related import ForeignKey, ForeignObject
@@ -6,8 +5,8 @@ from django.shortcuts import render ,  redirect
 from django.http import JsonResponse,HttpResponse, request
 from django.views.generic import View, TemplateView
 from django.template.loader import render_to_string
-from .models import INFOSP, Advisor_Profile , Specialty
-from .filters import FilterAdName, FilterAdSpe, FilterDSSP
+from .models import INFOSP, Advisor_Profile , Specialty, Doctor_Profiles
+from .filters import FilterAdName
 from .models import DANH_SACH_SP,MOTA,INFOSP
 
 def Home(request):
@@ -18,15 +17,12 @@ def Medicine(request):
 
 
 def advisorlist(request):
-    total_data=Advisor_Profile.objects.count()
-    data=Advisor_Profile.objects.all()[:6]
-    test=Advisor_Profile.objects.all()
-    spec=Specialty.objects.all()
-    opts=request.GET.get('opts','-2')
-    specFilter= Advisor_Profile.objects.filter(specialty__icontains=opts)
+    total_data=Doctor_Profiles.objects.count()
+    data=Doctor_Profiles.objects.all()[:6]
+    test=Doctor_Profiles.objects.all()
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
-    context={"data":data, "total_data":total_data, 'nameFilter':test, 'spec':spec, 'specFilter':specFilter}
+    context={"data":data, "total_data":total_data, 'nameFilter':test}
     return render(request, 'pages/advisor.html',context)
 
 def tuvan(request, phanloai):
@@ -60,7 +56,7 @@ def Detailsp(request, id):
 def load_more_data(request):
 	offset=int(request.GET['offset'])
 	limit=int(request.GET['limit'])
-	data=Advisor_Profile.objects.all()[offset:limit+offset]
+	data=Doctor_Profiles.objects.all()[offset:limit+offset]
 	t=render_to_string('ajax/advisor.html',{'data':data})
 	return JsonResponse({'data':t}
 )

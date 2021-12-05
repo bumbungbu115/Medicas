@@ -8,7 +8,6 @@ class Advisor_Profile(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     specialty=models.CharField(max_length=50, null=False, blank=False)
     info=models.CharField(max_length=500, blank=True)
-
     def __str__(self):
         return str(self.name)
         
@@ -17,6 +16,16 @@ class Specialty(models.Model):
    def __str__(self):
        return self.spec
    
+
+class Doctor_Profiles(models.Model):
+    image=models.ImageField(default="ava_doc.jpg", null=True, blank=False, upload_to="image/")
+    title=models.CharField(max_length=50, null=False, blank=False)
+    name = models.OneToOneField(User, on_delete=models.CASCADE)
+    specialty=models.CharField(max_length=50, null=False, blank=False)
+    info=models.CharField(max_length=500, blank=True)
+    def __str__(self):
+        return str(self.name)
+
 
     
 class DANH_SACH_SP(models.Model):
