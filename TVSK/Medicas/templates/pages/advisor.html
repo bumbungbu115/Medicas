@@ -67,9 +67,9 @@
                 <form method="get">
                <select>
                     <option selected="" value="-2">Tìm theo chuyên khoa</option>
-                    {% comment %} {% for opt in spec %}
-                    <option value="{{opt.id}}" >{{opt.khoa}}</option>
-                    {% endfor %} {% endcomment %}
+                    {% for opt in spec %}
+                    <option value="{{opt.id}}" >{{opt.spec}}</option>
+                    {% endfor %}
                 </select>
                     {% comment %} {{specFilter.form}} {% endcomment %}
                     {% comment %} <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button> {% endcomment %}
@@ -92,7 +92,13 @@
                         <p>{{item.info}}</p>
 
                     </div>
-                    <div class="Chat"> <a href="{% url 'chatroom' %}">Kết nối</a> </div>
+                    <div class="Chat"> 
+                        {%if request.user.is_authenticated%}
+                            <a href="{% url 'chatroom' user.pk %}">Kết nối</a>
+                        {%else%}
+                            <a href="{% url 'login'%}">Kết nối</a>
+                        {%endif%}
+                    </div>
                 </div>
                     {% endfor %}
                 {% else %}

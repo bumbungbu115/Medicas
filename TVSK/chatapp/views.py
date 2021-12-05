@@ -1,43 +1,50 @@
 from django.core.checks import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import Room, Message
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from django.contrib.humanize.templatetags.humanize import naturaltime
+from django.db.models import Q
+from .models import User, Message
+from django.contrib.humanize.templatetags.humanize import naturaltime
+import json
 
-def chatroom(request):
-    return render(request, 'chatapp/room.html')
+@login_required
+def chatroom(request, pk:int):
+    otheruser = get_object_or_404(User,pk=pk)
+    messages = Message.objects.filter(
+        Q(receiver=request.user, sender=otheruser)
+    )
+    messages.update(seen=True)
+    messages = messages | Message.objects.filter(Q(receiver=otheruser, sender=request.user) )
+    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': User.objects.all(), "user_messages": messages})
 
-def inbox(request, inbox):
-    username=request.GET.get('username')
-    chat_details=Room.objects.get(name=inbox)
-    return render(request,'chatapp/inbox.html',{
-        'username':username,
-        'inbox':inbox,
-        'chat_details':chat_details
-    })
+@login_required
+def ajax_load_messages(request, pk):
+    otheruser = get_object_or_404(User, pk=pk)
+    messages = Message.objects.filter(seen=False, receiver=request.user)
+    
+    print("messages")
+    message_list = [{
+        "sender": message.sender.username,
+        "message": message.message,
+        "sent": message.sender == request.user,
 
-def check(request):
-    inbox=request.POST['room_name']
-    username = request.POST['username']
-    if Room.objects.filter(name=inbox).exists():
-        return redirect('chatroom/'+inbox+'/?username='+username)
-    else:
-        new_room = Room.objects.create(name=inbox)
-        new_room.save()
-        # return redirect('/'+room+'/?username='+username)
-        return redirect('chatroom/'+inbox+'/?username='+username)
+        "date_created": naturaltime(message.date_created),
 
-def send(request):
-    username=request.POST['username']
-    room_id=request.POST['room_id']
-    message=request.POST['message']
+    } for message in messages]
+    messages.update(seen=True)
+    
+    if request.method == "POST":
+        message = json.loads(request.body)['message']
+        
+        m = Message.objects.create(receiver=otheruser, sender=request.user, message=message)
+        message_list.append({
+            "sender": request.user.username,
+            "username": request.user.username,
+            "message": m.message,
+            "date_created": naturaltime(m.date_created),
+            "sent": True,
+        })
+    print(message_list)
+    return JsonResponse(message_list, safe=False)
 
-    new_message=Message.objects.create(value=message, user=username,room=room_id)
-    new_message.save()
-    return HttpResponse('Message sent successfully')
-
-
-def getmessage(request,inbox):
-    chat_details=Room.objects.get(name=inbox)
-    message=Message.objects.filter(room=chat_details.id)
-    return JsonResponse({"message":list(message.values())})

@@ -153,14 +153,23 @@ a{
 }
 
 
+.footer-illu{
+    position: relative;
+    background: transparent;
+}
+.foo{
+    z-index: -7;
+    position: absolute;
+    width: 74vw;
+    height: 26vw;
+    bottom: -6vw;
+    right: 0vw;
+}
+
 ul{
     list-style-type: none;
 }
 
-footer{
-    position: relative;
-    bottom: -40vw;
-}
 .contact{
     background: rgba(17, 42, 156, 0.767);
     width: 100%;
@@ -180,3 +189,18 @@ span{
     font-size: 1.4vw;
     padding: 0vw 3vw;
 }
+
+@media only screen and (max-width: 960px) {
+    .cont li{
+        font-size: 10px;
+        padding: 0vw 4vw;
+    }
+}
+/* :root{
+    --primary-color:#445dc9;
+}
+.navbar-brand img{
+    margin: 1vw 0;
+    width: 3.8vw;
+    height: 4vw;
+} */
