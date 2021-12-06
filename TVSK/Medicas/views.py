@@ -17,12 +17,13 @@ def Medicine(request):
 
 
 def advisorlist(request):
+    total_data=Doctor_Profiles.objects.count()
     test=Doctor_Profiles.objects.all()
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
     obj='Tìm theo chuyên khoa'
     spec=Doctor_Profiles.objects.values('specialty').distinct()
-    context={"data":data,'spec':spec,'object':obj}
+    context={"data":data,'spec':spec,'object':obj,'total_data':total_data}
     return render(request, 'pages/advisor.html',context)
 
 def selection(request, select):

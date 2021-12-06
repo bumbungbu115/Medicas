@@ -39,7 +39,7 @@
           </div> {% endcomment %}
           <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #445dc9;">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#" style="color: white;">
+                <a class="navbar-brand" href="{% url 'index' %}" style="color: white;">
                     <img src="{% static '/image/health.png' %}" alt="" width="33" height="33">MEDICAS
                 </a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
@@ -47,15 +47,20 @@
                 </button>
                 <div class="navbar-collapse collapse" id="navbar">
                     <ul class="navbar-nav menu ms-auto ">
-                        <li class="nav-item mx-3"><a href="{%url 'index'%}" class="nav-link text-light">Trang chủ</a></li>
-                        <li class="nav-item mx-3"><a href="{%url 'advisor'%}" class=" nav-link text-light">Tư vấn sức khỏe</a></li>
-                        <li class="nav-item mx-3"><a href="{%url 'medicine'%}" class="current nav-link text-light">Tủ thuốc</a></li>
+                        <li class="nav-item mx-3"><a href="{% url 'index' %}" class="nav-link text-light">Trang chủ</a></li>
+                        <li class="nav-item mx-3"><a href="{% url 'advisor' %}" class=" nav-link text-light">Tư vấn sức khỏe</a></li>
+                        <li class="nav-item mx-3"><a href="{% url 'medicine' %}" class="current nav-link text-light">Tủ thuốc</a></li>
                     </ul>
                     <ul class="navbar-nav  ms-auto">
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            {% comment %} <button class="login btn btn-outline-light "href="{%url 'login'%}">Đăng nhập</button> {% endcomment %}
-                            {% comment %} <a href="{%url 'login'%}" class="current nav-link text-light">Đăng nhập</a></li> {% endcomment %}
-                            <a href="{%url 'login'%}" class="btn login btn-outline-light" role="button">Đăng nhập</a>
+                            <a href="{% url 'login' %}" class="btn login btn-outline-light" role="button">{{request.user.username}}</a>
+                        </li>
+                        {%else%}
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="btn login btn-outline-light" role="button">Đăng nhập</a>
+                        </li>
+                        {%endif%}
                         </li>
                     </ul>
                 </div>

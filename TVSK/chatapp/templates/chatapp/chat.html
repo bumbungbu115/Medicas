@@ -34,9 +34,15 @@
                     <li class="nav-item mx-3"><a href="{% url 'medicine' %}" class=" nav-link text-light">Tủ thuốc</a></li>
                 </ul>
                 <ul class="navbar-nav  ms-auto">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn login btn-outline-light" role="button">{{request.user.username}}</a>
+                    </li>
+                    {%else%}
                     <li class="nav-item">
                         <a href="{% url 'login' %}" class="btn login btn-outline-light" role="button">Đăng nhập</a>
                     </li>
+                    {%endif%}
                 </ul>
             </div>
         </div>
@@ -55,7 +61,7 @@
                     </div>
                     {% for user in users %}
                     {%if user|has_group:"NguoiDung"%}
-                    <div class="contacts" data-username="{{ user.username }}">
+                    <div class="contacts" data-username="{{ user.get_full_name }}">
                         <div class="pb-1 d-flex flex-row align-items-center ">
                             <div class="h-100">
                                 <img style="width: 50px; height: 50px;" class="img-thumbnail rounded-circle"
@@ -66,7 +72,7 @@
                                     class="d-flex d-row-flex justify-content-between">
                                     <div class="info">
                                         <p class="font-large font-weight-bold color-primary f p-0 m-0">
-                                            {{ user.username }}
+                                            {{ user.get_full_name}}
                                         </p>
 
                                     </div>
@@ -85,6 +91,8 @@
                 </div>
             </div>
             {% endif %}
+
+
             <!-- chat area -->
             {% if request.user|has_group:"NguoiDung" %}
             <div class="normal">
@@ -92,9 +100,15 @@
             <div class="col-lg-8 col-md-8">
             {% endif %}  
                 <div class="head d-flex align-items-center px-3 px-md-5 py-1 mt-4">
-                    <img class="img-thumbnail rounded-circle" style="height: 60px !important; width: 60px !important;"
-                        src="{{ otheruser.profile.picture.url }}">
-                    <p class=" my-1 text-dark ms-2">{{ otheruser.username }}</p>
+                    {% if request.user|has_group:"BacSi" %}
+                    <img class="img-thumbnail rounded-circle" style="height: 60px !important; width: 60px !important;"             
+                    src="https://icons-for-free.com/iconfiles/png/512/avatar+human+people+profile+user+icon-1320168139431219590.png">
+                    <p class=" my-1 text-dark ms-2">{{ otheruser.get_full_name}}</p>
+                    {%else%}
+                    <img class="img-thumbnail rounded-circle" style="height: 60px !important; width: 60px !important;"             
+                    src="{{BacSi.image.url}}">
+                    <p class=" my-1 text-dark ms-2">{{ BacSi.title}}</p>
+                    {%endif%}
                 </div>
                 <div id="chat-panel" class="chat-panel">
                     {% for user_message in user_messages %}

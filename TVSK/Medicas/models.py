@@ -18,7 +18,7 @@ class Specialty(models.Model):
    
 
 class Doctor_Profiles(models.Model):
-    image=models.ImageField(default="ava_doc.jpg", null=True, blank=False, upload_to="image/")
+    image=models.ImageField(default="ava_doc.jpg", null=True, blank=False)
     title=models.CharField(max_length=50, null=False, blank=False)
     name = models.OneToOneField(User, on_delete=models.CASCADE)
     specialty=models.CharField(max_length=50, null=False, blank=False)

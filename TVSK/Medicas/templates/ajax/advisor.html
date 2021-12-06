@@ -1,8 +1,8 @@
 {% if data %}
-{% for item in data %}
+{% for item in data  %}
 <div class="col box">
     <div class="testimonial ">
-        <img src="{{item.image.url}}">
+        <img src="{{item.image.url}}" alt="">
         <div class="info">
             <p class="name">{{item.title}}</p>
             <cite class="specialty">{{item.specialty}}</cite>
@@ -11,9 +11,11 @@
         <p>{{item.info}}</p>
 
     </div>
-    <div class="Chat"> <a href="">Kết nối</a> </div>
+    <div class="Chat"> 
+        <a href="{% url 'chatroom' item.name_id %}">Kết nối</a>
+    </div>
 </div>
-{% endfor %}
+    {% endfor %}
 {% else %}
-<p> DỮ LIỆU KHÔNG TỒN TẠI </p>
+    <p> DỮ LIỆU KHÔNG TỒN TẠI </p>
 {% endif %}

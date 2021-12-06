@@ -18,8 +18,11 @@ def chatroom(request, pk:int):
     messages.update(seen=True)
     messages = messages | Message.objects.filter(Q(receiver=otheruser, sender=request.user) )
     users=User.objects.exclude(pk=request.user.pk)
-    usergroups=Doctor_Profiles.objects.all()
-    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages, ' usergroups': usergroups})
+    if request.user.groups.filter(name='NguoiDung'):
+        BacSi=Doctor_Profiles.objects.get(name_id=pk)
+        return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages, 'BacSi':BacSi })
+    else:
+        return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages, })
 
 @login_required
 def ajax_load_messages(request, pk):
