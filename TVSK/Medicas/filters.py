@@ -7,3 +7,7 @@ class FilterAdName(django_filters.FilterSet):
     model = Doctor_Profiles
     fields ='__all__'
 
+class FilterSpec(django_filters.FilterSet):
+    spe = CharFilter(field_name='specialty', lookup_expr='icontains')  
+    model = Doctor_Profiles
+    fields ='__all__'

@@ -2,22 +2,24 @@ from django.core.checks import messages
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.humanize.templatetags.humanize import naturaltime
+from django.contrib.humanize.templatetags.humanize import naturaltime, register
 from django.db.models import Q
+from django.contrib.auth.models import Group
 from .models import User, Message
+from Medicas.models import Doctor_Profiles
 from django.contrib.humanize.templatetags.humanize import naturaltime
 import json
 
 @login_required
 def chatroom(request, pk:int):
+    # if register.user.groups.filter(name='NguoiDung'):
     otheruser = get_object_or_404(User,pk=pk)
-    messages = Message.objects.filter(
-        Q(receiver=request.user, sender=otheruser)
-    )
+    messages = Message.objects.filter(Q(receiver=request.user, sender=otheruser))
     messages.update(seen=True)
     messages = messages | Message.objects.filter(Q(receiver=otheruser, sender=request.user) )
     users=User.objects.exclude(pk=request.user.pk)
-    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages})
+    usergroups=Doctor_Profiles.objects.all()
+    return render(request, "chatapp/chat.html", {"otheruser": otheruser, 'users': users, "user_messages": messages, ' usergroups': usergroups})
 
 @login_required
 def ajax_load_messages(request, pk):

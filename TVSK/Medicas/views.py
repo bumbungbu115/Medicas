@@ -6,7 +6,7 @@ from django.http import JsonResponse,HttpResponse, request
 from django.views.generic import View, TemplateView
 from django.template.loader import render_to_string
 from .models import INFOSP, Advisor_Profile , Specialty, Doctor_Profiles
-from .filters import FilterAdName
+from .filters import FilterAdName,FilterSpec
 from .models import DANH_SACH_SP,MOTA,INFOSP
 
 def Home(request):
@@ -20,6 +20,7 @@ def advisorlist(request):
     test=Doctor_Profiles.objects.all()
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
+
     spec=Doctor_Profiles.objects.values('specialty').distinct()
     context={"data":data,'spec':spec}
     return render(request, 'pages/advisor.html',context)
@@ -32,9 +33,29 @@ def selection(request, select):
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
     spec=Doctor_Profiles.objects.values('specialty').distinct()
+<<<<<<< HEAD
     context={"data":data,'spec':spec,'object':select}
+=======
+    context={"data":data,'spec':spec}
+
+>>>>>>> f6dd5e5ce01fd6a6a73cba38f0004ba0a715c24f
     return render(request, 'pages/advisor.html',context)
 
+def selection(request):
+    if request.method == "POST":
+       select=request.POST['chuyenkhoa']
+       test=Doctor_Profiles.objects.filter(specialty__icontains=select)
+       specFilter=FilterSpec(select,queryset=test)
+       spec=Specialty.objects.all()
+       context={'data':test,'spec':spec}
+       return render(request, 'pages/advisor.html',context)
+    else:
+        data=Doctor_Profiles.objects.all()
+        total_data=Doctor_Profiles.objects.count()
+        context={"total_data":total_data, "data":data }
+        return render(request, 'pages/advisor.html',context)
+    
+       
 def tuvan(request, phanloai):
     sp = DANH_SACH_SP.objects.filter(PHANLOAI=phanloai)
     cd = DANH_SACH_SP.objects.values('CONGDUNG').distinct()
