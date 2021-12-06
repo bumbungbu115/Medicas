@@ -12,6 +12,7 @@ urlpatterns = [
     path('advisors/',views.advisorlist,name="advisor"),
     path('load-more-data',views.load_more_data,name='load_more_data'),
     path('medicine/',views.Medicine,name="medicine"),
+    path('spec/',views.selection,name="selection")
 ]
 
 if settings.DEBUG:
