@@ -17,12 +17,19 @@ def Medicine(request):
 
 
 def advisorlist(request):
-    total_data=Doctor_Profiles.objects.count()
-    data=Doctor_Profiles.objects.all()[:6]
     test=Doctor_Profiles.objects.all()
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
-    context={"data":data, "total_data":total_data, 'nameFilter':test}
+    spec=Doctor_Profiles.objects.values('specialty').distinct()
+    context={"data":data,'spec':spec}
+    return render(request, 'pages/advisor.html',context)
+
+def selection(request, select):
+    test=Doctor_Profiles.objects.filter(specialty=select)
+    nameFilter = FilterAdName(request.GET, queryset=test)
+    data=nameFilter.qs[:6]
+    spec=Doctor_Profiles.objects.values('specialty').distinct()
+    context={"data":data,'spec':spec}
     return render(request, 'pages/advisor.html',context)
 
 def tuvan(request, phanloai):
