@@ -59,20 +59,17 @@
             <div class="form-group-name">
                 <form method="get">
                     <input type="search" id="name" name="name" placeholder="Tìm theo tên">
-                    {{nameFilter.form}}
                     <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button>
                 </form>
             </div>
             <div class="form-group-specialty">
-                <form method=POST action="{% url 'selection' %}"> 
-                    {% csrf_token %}
-               <select name="chuyenkhoa">
-                    <option selected="" value="-2">Tìm theo chuyên khoa</option>
-                    {% for opt in spec %}
-                    <option value="{{opt.id}}" >{{opt.spec}}</option>
+                <form method="get">
+               <select onchange="location=this.value">
+                    <option selected="" value="{%url 'advisor' %}">Tìm theo chuyên khoa</option>                    
+                    {% for opt in spec %}    
+                        <option value="{% url 'select' opt.specialty %}">{{opt.specialty}}</option>
                     {% endfor %}
                 </select>
-                    <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button>
                 </form>
             </div>
         </section>

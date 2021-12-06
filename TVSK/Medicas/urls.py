@@ -12,7 +12,8 @@ urlpatterns = [
     path('advisors/',views.advisorlist,name="advisor"),
     path('load-more-data',views.load_more_data,name='load_more_data'),
     path('medicine/',views.Medicine,name="medicine"),
-    path('spec/',views.selection,name="selection")
+    path('Tìm kiếm/<select>/',views.selection,name="select"),
+
 ]
 
 if settings.DEBUG:
