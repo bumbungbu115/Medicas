@@ -35,6 +35,8 @@ def selection(request, select):
     spec=Doctor_Profiles.objects.values('specialty').distinct()
     context={"data":data,'spec':spec,'object':select}
     return render(request, 'pages/advisor.html',context)
+
+
 def tuvan(request, phanloai):
     sp = DANH_SACH_SP.objects.filter(PHANLOAI=phanloai)
     cd = DANH_SACH_SP.objects.values('CONGDUNG').distinct()
