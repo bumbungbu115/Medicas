@@ -25,11 +25,14 @@ def advisorlist(request):
     return render(request, 'pages/advisor.html',context)
 
 def selection(request, select):
-    test=Doctor_Profiles.objects.filter(specialty=select)
+    if select== 'all':
+        test=Doctor_Profiles.objects.all()
+    else:
+        test=Doctor_Profiles.objects.filter(specialty=select)
     nameFilter = FilterAdName(request.GET, queryset=test)
     data=nameFilter.qs[:6]
     spec=Doctor_Profiles.objects.values('specialty').distinct()
-    context={"data":data,'spec':spec}
+    context={"data":data,'spec':spec,'object':select}
     return render(request, 'pages/advisor.html',context)
 
 def tuvan(request, phanloai):

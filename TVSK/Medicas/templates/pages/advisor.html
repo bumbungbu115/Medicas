@@ -58,18 +58,23 @@
             <hr />
             <div class="form-group-name">
                 <form method="get">
-                    <input type="search" id="name" name="name" placeholder="Tìm theo tên">
+                    <input type="search" id="name" name="name"  placeholder="Tìm theo tên">
+                    <input type="hidden" id="hidden_name" name="hidden_name">
                     <button type="submit"><i class="fa fa-search" style="color: #12CBC4;"></i></button>
                 </form>
             </div>
             <div class="form-group-specialty">
                 <form method="get">
-               <select onchange="location=this.value">
-                    <option selected="" value="{%url 'advisor' %}">Tìm theo chuyên khoa</option>                    
-                    {% for opt in spec %}    
-                        <option value="{% url 'select' opt.specialty %}">{{opt.specialty}}</option>
-                    {% endfor %}
-                </select>
+                    <select onchange="location=this.value">
+                            <option value="{% url 'select' 'all' %}">Tìm theo chuyên khoa </option>                    
+                            {% for opt in spec %}
+                                {% if object == opt.specialty %} 
+                                <option value="{% url 'select' opt.specialty %}" selected>{{opt.specialty}}</option>
+                                {% else %}
+                                <option value="{% url 'select' opt.specialty %}">{{opt.specialty}}</option>
+                                {% endif %}
+                            {% endfor %}
+                    </select>
                 </form>
             </div>
         </section>
