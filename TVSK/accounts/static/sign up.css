@@ -105,12 +105,12 @@ a{
   color: #4CAF50;
   
 }
-.part2 label[for=username], label[for=email], label[for=password1], label[for=password2]{
+.part2 label[for=username], label[for=email], label[for=last_name], label[for=first_name], label[for=password1], label[for=password2]{
   font-size: 20px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
 }
-input[type=text], input[type=email], input[type=password] {
+input[type=text], input[type=email], input[type=last_name], input[type=first_name], input[type=password] {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   width: 100%;

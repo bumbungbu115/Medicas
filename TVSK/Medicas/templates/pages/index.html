@@ -26,10 +26,29 @@
                    <li><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
                    <li><a href="{% url 'medicine' %}">Tủ thuốc</a></li>
                </ul>
+               
                <ul class="login">
-                    <li><a href="{% url 'login' %}">Đăng nhập/Đăng ký</a></li>
-               </ul>
+                {% if user.is_authenticated %}
+          
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Đăng xuất</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Xin chào, {{user.username}}</a>
+                </li>
+    
+                {% else %}
+    
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>
+                </li>
+    
+                 {% endif %}
+                </ul>
+                </div>
             </nav>
+            </nav>
+            
     </div>
 
     <div class="description1">
