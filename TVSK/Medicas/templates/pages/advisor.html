@@ -36,7 +36,7 @@
                 </ul>
                 {%if request.user.is_authenticated%}
                 <ul class="secondary-nav">
-                    <li class="cta"><a href="{% url 'login' %}">{{request.user.username}}</a></li>
+                    <li class="cta"><a href="{% url 'login' %}">Xin chào, {{request.user.username}}</a></li>
                 </ul>
                 {%else%}
                 <ul class="secondary-nav">
