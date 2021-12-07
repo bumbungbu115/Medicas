@@ -1,94 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEDICAS</title>
-    {% load static %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
-    {% block title %}
-    {% endblock %}
-    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> {% endcomment %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
+
 <body>
-    <div class="header">
-        <div class="container">
-            <img class="icon" src="{% static '/image/health.png' %}" alt="logo">
-            <a class="logo" href="#">MEDICAS </a>
-            <h1 class="slogan">Chăm sóc sức khỏe - Chia sẻ niềm vui</h1>
-        </div>
-            <nav>
-               <ul class="menu">
-                   <li class="current"><a href="">Trang chủ</a></li>
-                   <li><a href="{% url 'advisor' %}">Tư vấn sức khỏe</a></li>
-                   <li><a href="{% url 'medicine' %}">Tủ thuốc</a></li>
-               </ul>
-               
-               <ul class="login">
-                {% if user.is_authenticated %}
-          
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Đăng xuất</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Xin chào, {{user.username}}</a>
-                </li>
-    
-                {% else %}
-    
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Đăng nhập</a>
-                </li>
-    
-                 {% endif %}
-                </ul>
-                </div>
-            </nav>
-            </nav>
-            
-    </div>
-
-    <div class="description1">
-        <div class="block1">
-            <div class="part1">
-                <p class="header-text1">Bạn thấy không khỏe?</p>
-                <p class="header-text1">Hãy để Medicas chăm sóc cho bạn</p>
-                <p>Tìm hiểu thêm về các dịch vụ chăm sóc sức khỏe của chúng tôi - các bác sĩ Medicas thân thiện sẽ tận tình chăm sóc bạn và gia đình.</p>
-            </div> 
-            <img src="{% static '/image/not-feeling-well.svg' %}" alt="">   
-        </div>      
-    </div>
-
-    <div class="description2">
-        <div class="block2">
-            <div class="img2"><img src="{% static 'image/call doctor.jpg' %}" alt=""> </div>
-            <div class="part2">  
-                <p class="header-text2">Tư vấn sức khỏe 24/7 </p>
-                <p> Bạn cần sự tư vấn chuyên môn khi gặp các vấn đề sức khỏe? Dù bạn ở đâu hay vào bất cứ lúc nào, các bác sĩ Medicas luôn sẵn sàng tư vấn, giải đáp đáp mọi thắc mắc của bạn.</p>
-            </div> 
-        </div>      
-    </div>
-    <footer>
-        <div class="contact">
-           <ul class="cont">
-               <li> <span>Điện thoại</span> 09934923</li>
-               <li> <span>Hotline</span> 190063689</li>
-               <li> <span>Hỗ trợ</span> support@health.com</li>
-           </ul>
-       </div>
-    </footer>
-
-    {% comment %} <nav class="navbar navbar-expand-md navbar-dark my-0 py-0" style="background-color: #0f4472;">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #445dc9;">
         <div class="container-fluid">
-            <a class="navbar-brand my-0 py-0" href="/">
-                <img class="icon" src="{% static '/image/health.png' %}" alt="logo"height="50" >
-                MEDICAS
+            <a class="navbar-brand mt-0" href="#" style="color: white;">
+                <img src="{% static '/image/health.png' %}" alt="" width="44" height="44">MEDICAS
             </a>
-        <div class="ms-auto"> Chăm sóc sức khỏe - Chia sẻ niềm vui </div>
-    </nav> {% endcomment %}
+            <p class="h5 d-flex mt-md-5 mt-0 ms-auto">Chăm sóc sức khỏe - Chia sẻ niềm vui</p>
+        </div>
+    </nav>
+    <nav class="nav2 navbar navbar-expand-lg navbar-light py-2" >
+        <div class="container-fluid">
+            <button class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbar">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="navbar-nav menu align-items-end">
+                    <li class="nav-item mx-3"><a href="#" class="nav-link" style="color: #445dc9;">Trang chủ</a></li>
+                    <li class="nav-item mx-3"><a href="{% url 'advisor' %}" class="nav-link" style="color: #445dc9;">Tư vấn sức khỏe</a></li>
+                    <li class="nav-item mx-3"><a href="{% url 'medicine' %}" class=" nav-link" style="color: #445dc9;">Tủ thuốc</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto align-items-end">
+                    {% if user.is_authenticated %}
+                    {% comment %} <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn login"style="color: #445dc9" role="button">Đăng xuất</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn login"style="color: #445dc9" role="button">Xin chào, {{user.username}}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn login"style="color: #445dc9" role="button">Đăng nhập/Đăng kí</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="description1 container-fluid row">
+        <div class="col-md-8 col-12">
+            <div class="sec1">
+                <p class="h2 ms-md-5 ms-2 header-text1 first">Bạn thấy không khỏe?</p>
+                <p class="h2 ms-md-5 ms-2 mt-1 header-text1">Hãy để Medicas chăm sóc cho bạn</p>
+                <p class="part2 ms-md-5 mt-3 ms-2">Tìm hiểu thêm về các dịch vụ chăm sóc sức khỏe của chúng tôi - các bác sĩ Medicas thân thiện sẽ tận tình chăm sóc bạn và gia đình.</p>
+            </div>  
+        </div>     
+        <div class="illu1 col-md-4 col-12"><img src="{% static '/image/not-feeling-well.svg' %}" alt=""></div> 
+    </div>
+    <div class="description2 container-fluid row" style="margin-top: 8em;">
+        <div class="illu2 col-md-6  col-12"><img src="{% static '/image/call doctor.jpg' %}" alt=""></div> 
+        <div class="text col-md-6 col-12">
+            <div class="sec2">
+                <p class="h2 me-2 me-md-0 header-text1 first tuvan ">Tư vấn sức khỏe 24/7</p>
+                <p class="part2 textsec2 mt-3 ">Bạn cần sự tư vấn chuyên môn khi gặp các vấn đề sức khỏe? Dù bạn ở đâu hay vào bất cứ lúc nào, các bác sĩ Medicas luôn sẵn sàng tư vấn, giải đáp đáp mọi thắc mắc của bạn.</p>
+            </div>  
+        </div>     
+    </div>
+    <div class="footer mt-2">
+        <div class="container-fluid p-1 px-5" style="background-color:#1b35acd7;">
+            <div class="mt-3 fs-6 text-light pt-2 mb-5">
+                    <ul class="cont">
+                        <li> <span>Điện thoại</span> 09934923</li>
+                        <li> <span>Hotline</span> 190063689</li>
+                        <li> <span>Hỗ trợ</span> support@health.com</li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+    
 </body>
 
 </html>

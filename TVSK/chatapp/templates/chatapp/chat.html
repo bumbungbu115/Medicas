@@ -28,12 +28,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="navbar">
-                <ul class="navbar-nav menu ms-auto ">
+                <ul class="navbar-nav menu ms-auto align-items-end">
                     <li class="nav-item mx-3"><a href="{% url 'index' %}" class="nav-link text-light">Trang chủ</a></li>
                     <li class="nav-item mx-3"><a href="{% url 'advisor' %}" class="current nav-link text-light">Tư vấn sức khỏe</a></li>
                     <li class="nav-item mx-3"><a href="{% url 'medicine' %}" class=" nav-link text-light">Tủ thuốc</a></li>
                 </ul>
-                <ul class="navbar-nav  ms-auto">
+                <ul class="navbar-nav align-items-end ms-auto">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'login' %}" class="btn login btn-outline-light" role="button">{{request.user.username}}</a>
@@ -63,10 +63,6 @@
                     {%if user|has_group:"NguoiDung"%}
                     <div class="contacts" data-username="{{ user.get_full_name }}">
                         <div class="pb-1 d-flex flex-row align-items-center ">
-                            <div class="h-100">
-                                <img style="width: 50px; height: 50px;" class="img-thumbnail rounded-circle"
-                                    src="{{ user.profile.picture.url }}">
-                            </div>
                             <div class="card-body py-1">
                                 <a href="{% url 'chatroom' user.pk %}"
                                     class="d-flex d-row-flex justify-content-between">

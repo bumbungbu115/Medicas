@@ -95,3 +95,32 @@ a.login:hover{
     background: white;
     color: #445dc9;
  }
+a.nav-link:hover{
+    color: #445dc9;
+    text-decoration: underline
+}
+ul{
+    list-style-type: none;
+}
+.cont{
+    display: flex;
+    text-align: right;
+    float: right;
+}
+span{
+    font-weight: bold;
+}
+.cont li{
+    font-size: 1.1em;
+    padding: 0vw 3vw;
+}
+@media screen and (max-width: 800px){
+    div.footer{
+        position: relative;
+        bottom: -1em;
+    }
+    ul.cont li{
+        font-size: .6em;
+        padding: 0 .5em;
+    }
+}

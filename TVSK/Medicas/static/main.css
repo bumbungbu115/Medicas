@@ -1,181 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap');
-
-body{
-    margin: 0;
-    font-family: Arial;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Josefin+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+:root{
+    --primary-color:#445dc9;
 }
-
-.container{
-    background: #445dc9;
-    padding: 1em 2em ;
-}
-
-.header{
-    background: rgb(246, 248, 248);
-}
-
-.logo{
-    padding: 0;
-    text-decoration: none;
+a.navbar-brand{
+    font-size:3em;
     font-weight: bold;
-    color: white;
-    font-size: 4.5vw;
-    margin: 0;
     font-family: 'Libre Caslon Text';
-
+    margin-left: 0;
 }
-
-.slogan{
-    text-align:right;
-    font-size:2.3vw;
-    font-family: 'Raleway';
-    padding: 0;
-    margin: 0;
-    color: white;
-
-}
-img{
-    margin-top: 1vw;
-    width: 3.8vw;
-    padding-left:0em ;
-}
-
-nav{
-    color: white;
-    display: grid;
-    grid-template-columns:60vw auto;
-    justify-content: unset;
-
-}
-.menu{
-    margin-left: 1vw;
-    padding-right: 2vw;
-    display: flex;
-    list-style-type: none;
-    height: auto;
-    width: 100%;
-    
-}
-.login{
-    padding-right: 2vw ;
-    text-align: right;
-}
-a{
-    text-decoration: none;
-    font-size: 1.6vw;
-    color: #3853ca;
-    background-color: transparent;
-    margin: 1vw;
-    padding-right: 3vw;
-    font-family: 'Fira Sans';
-    font-weight:normal;
-}
-
-.header nav li:hover{
-    text-decoration: white underline;
- }
-
-.block1 img{
-    z-index: -1;
-    background-repeat:no-repeat;
-    background-size: 30%;
-    margin-top: 0;
-    width: 56%;
-    height:auto;
-    position: absolute;
-    right:0;
-    top:10vw;
-
-
-    
-}
-.block1 .part1{
-    font-family: Fira sans;
-    font-size: 2vw;
-    color:#00d2d3;
-    padding: 0;
-    margin-left: 5vw;
-    margin-top: 8vw;
-    width: 43%;
-    float: left; 
-    letter-spacing: 0.5px; 
-    text-align: justify;
-}
-.block1 .part1 .header-text1{
-    color: #483D8B;
-    font-size: 4vw;
-    font-weight: bolder;
-    text-align: left;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.description2{
-    position: absolute;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    top: 54vw;
-}
-.description2 .block2 img{
-    background-repeat:no-repeat;
-    background-size: 30%;
-    width: 50%;
-    height: auto;
-    padding: 1vw 0 1vw 1;
-    margin-left: 1vw;
-    
-}
-.block2 .part2 {
-    position: absolute;
-    font-family: Fira sans;
-    font-size: 2vw;
-    color:#00d2d3;
-    top: 3.5vw;
-    width: 40vw;
-    right: 5vw;
-    letter-spacing: 0.5px;
-    text-align: justify;
-    padding-top:6vw;
-    margin: 0;
-} 
-    
-.block2 .part2 .header-text2{
-    color: #483D8B;
-    font-size: 4vw;
-    font-weight: bolder;
-    text-align: right;
-    padding: 0;
-    margin: 0;
-}
-
-
-.footer-illu{
+a.navbar-brand img{
+    margin-right: 2px;
     position: relative;
-    background: transparent;
+    top:-.1em;
 }
-.foo{
-    z-index: -7;
+a.nav-link{
+    font-size: 1.4em;
+    font-family: 'Fira Sans';
+}
+a.login{
+    font-family: 'Fira Sans';
+    font-size: 1.3em;
+}
+a.current{
+    text-decoration: underline;
+}
+a.login, a.nav-link:hover{
+    color: #445dc9;
+    text-decoration: underline;
+}
+p.h5{
+    font-family: 'EB Garamond';
+    font-size: 1.6em;
+    color: aliceblue;
+}
+nav.nav2{
+    background-color: whitesmoke;
+}
+span.navbar-toggler-icon{
+    color: var(--primary-color);
+}
+
+div.illu1 img{
     position: absolute;
-    width: 74vw;
-    height: 26vw;
-    bottom: -6vw;
-    right: 0vw;
+    width: 40em;
+    height: 40em;
+    right: -1.8em;
+}
+p.header-text1{
+    color:  #483D8B;
+    font-family:'Fira sans';
+    font-weight: bolder;
+    font-size: 3em;
+    width: 80%;
+}
+p.first{
+    margin-top:2.5em;
+}
+p.part2{
+    color: #00d2d3;
+    font-family: 'Fira Sans';
+    width: 75%;
+    font-size: 1.8em;
+}
+
+div.illu2 img{
+    position: relative;
+    left: -1em;
+}
+
+div.sec2{
+    position: absolute;
+    top:-2em;
+    width: 100%;
+    right: -2m;
+    padding-right: em;
+    text-align: justify;
+}
+p.textsec2{
+    margin: 0;
+    padding: 0;
+    margin-left: 3em;
+}
+p.tuvan{
+    margin-left: 1.8em;
 }
 
 ul{
     list-style-type: none;
-}
-
-.contact{
-    background: rgba(17, 42, 156, 0.767);
-    width: 100%;
-    color: white;
-    padding: 1vw 1vw;
-    float: right;
 }
 .cont{
     display: flex;
@@ -186,21 +102,51 @@ span{
     font-weight: bold;
 }
 .cont li{
-    font-size: 1.4vw;
+    font-size: 1.1em;
     padding: 0vw 3vw;
 }
 
-@media only screen and (max-width: 960px) {
-    .cont li{
-        font-size: 10px;
-        padding: 0vw 4vw;
+@media screen and (max-width: 800px){
+    div.illu1 img{
+        width: 34em;
+        height: 34  em;
+        top:1em;
+    }
+    p.header-text1{
+        font-size: 1.3em;
+        width: 90%;
+    }
+    p.first{
+        margin-top:1.5em;
+    }
+    p.part2{
+        width: 95%;
+        text-align: justify;
+        font-size: 1em;
+    }
+
+    div.description2{
+        flex-direction: row-reverse;
+    }
+    div.illu2{
+        display: none;
+    }
+    div.text{
+        bottom: 7.5em;
+    }
+    p.textsec2{
+        margin-left: .5em;
+    }
+    p.tuvan{
+        margin-left: .5em;
+    }
+    div.footer{
+        position: relative;
+        bottom: -30em;
+    }
+    ul.cont li{
+        font-size: .6em;
+        padding: 0 .5em;
     }
 }
-/* :root{
-    --primary-color:#445dc9;
-}
-.navbar-brand img{
-    margin: 1vw 0;
-    width: 3.8vw;
-    height: 4vw;
-} */
+
