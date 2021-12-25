@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'TVSK',
         'USER': 'admin',
         'PASSWORD': '12345',
-        'HOST': '42.117.56.6',
+        'HOST': '118.71.79.110',
         'PORT': '1433',
         
         'OPTIONS': {
