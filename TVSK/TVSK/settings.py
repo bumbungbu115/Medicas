@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'TVSK',
         'USER': 'admin',
         'PASSWORD': '12345',
-        'HOST': '118.71.79.110',
+        'HOST': '...',          #Apply IP Address of MSSQL Server
         'PORT': '1433',
         
         'OPTIONS': {
